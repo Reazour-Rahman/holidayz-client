@@ -1,13 +1,13 @@
 import axios from "axios";
 import {
-  createUserWithEmailAndPassword,
-  getAuth,
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
-  updateProfile,
+    createUserWithEmailAndPassword,
+    getAuth,
+    GoogleAuthProvider,
+    onAuthStateChanged,
+    signInWithEmailAndPassword,
+    signInWithPopup,
+    signOut,
+    updateProfile
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializationAuthentication from "../Pages/Authentication/firebase/firebase.init";
@@ -78,7 +78,7 @@ const useFirebase = () => {
   };
   // checking admin
   useEffect(() => {
-    const api = `https://vast-chamber-83281.herokuapp.com/users/${user.email}`;
+    const api = `https://holidayz-backend.vercel.app/users/${user.email}`;
     axios.get(api).then((res) => {
       setAdmin(res.data.admin);
     });

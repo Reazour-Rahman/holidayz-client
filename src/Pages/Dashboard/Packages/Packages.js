@@ -1,26 +1,25 @@
-import { Box } from "@mui/system";
-import React, { useEffect, useState } from "react";
-import "../../Home/Blogs/Blogs.css";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import SystemUpdateAltIcon from "@mui/icons-material/SystemUpdateAlt";
 import {
     Card,
     CardActionArea,
     CardActions,
     CardContent,
     CardMedia,
-    Typography,
-  } from "@mui/material";
-  import { Link } from "react-router-dom";
-  import HoverRating from "../../Home/Blogs/Rating";
-  import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-  import SystemUpdateAltIcon from "@mui/icons-material/SystemUpdateAlt";
-  import "./Package.css";
+    Typography
+} from "@mui/material";
+import { Box } from "@mui/system";
+import React, { useEffect, useState } from "react";
+import "../../Home/Blogs/Blogs.css";
+import HoverRating from "../../Home/Blogs/Rating";
+import "./Package.css";
 
 const Packages = () => {
   const [packages, setPackages] = useState([]);
   const [deleted, setDeleted] = useState(null);
 
   useEffect(() => {
-    fetch(`https://vast-chamber-83281.herokuapp.com/blogs`)
+    fetch(`https://holidayz-backend.vercel.app/blogs`)
       .then((res) => res.json())
       .then((data) => {
         setPackages(data.products);
@@ -31,7 +30,7 @@ const Packages = () => {
   const handleDeleteOrder = (id) => {
     const proceed = window.confirm('Are you confirm to delete this item?');
     if (proceed) {
-        const url = `https://vast-chamber-83281.herokuapp.com/blogs/${id}`
+        const url = `https://holidayz-backend.vercel.app/blogs/${id}`
         fetch(url, {
             method: 'DELETE'
         })

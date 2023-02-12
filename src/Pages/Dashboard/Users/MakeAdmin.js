@@ -11,7 +11,7 @@ const MakeAdmin = () => {
     //making user a admin
     const handleSubmit = e => {
         const user = {email}
-        axios.put('http://localhost:5000/users/admin', user)
+        axios.put('https://holidayz-backend.vercel.app/users/admin', user)
         .then(res => {  
             if (res.data.modifiedCount) {         
                 setAdminAdded(true)

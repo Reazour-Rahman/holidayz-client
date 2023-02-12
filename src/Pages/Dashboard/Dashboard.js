@@ -106,9 +106,9 @@ export default function Dashboard() {
   return (
     <Box sx={{ display: "flex" }}>
 
-      <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
+      <CssBaseline  />
+      <AppBar  position="fixed" open={open}>
+        <Toolbar style={{backgroundColor:"#070617"}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -122,13 +122,13 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
+            Welcome to the Admin Panel
           </Typography>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
+        <DrawerHeader style={{backgroundColor:"#070617"}}>
+          <IconButton className="text-white" onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
             ) : (
@@ -137,51 +137,51 @@ export default function Dashboard() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List className="" style={{height:"100vh"}}>
-          <Link className="text-decoration-none" to="/dashboard">
+        <List style={{height:"100vh", backgroundColor:"#070617"}}>
+          <Link className="text-decoration-none text-white" to="/dashboard">
             <ListItem button>
-              <ListItemIcon className="ms-2 fs-5"><i class="fas fa-blog"></i></ListItemIcon>
+              <ListItemIcon className="ms-2 fs-5 text-white"><i class="fas fa-blog"></i></ListItemIcon>
               <ListItemText primary={"Blogs"} />
             </ListItem>
           </Link>
 
-          <Link className="text-decoration-none" to="/dashboard/addBlog">
+          <Link className="text-decoration-none text-white" to="/dashboard/addBlog">
             <ListItem button>
-              <ListItemIcon className="ms-2 fs-5"><i class="fas fa-folder-plus"></i></ListItemIcon>
+              <ListItemIcon className="ms-2 fs-5 text-white"><i class="fas fa-folder-plus"></i></ListItemIcon>
               <ListItemText primary={"Add Blog"} />
             </ListItem>
           </Link>
 
-          <Link className="text-decoration-none" to="/dashboard/users">
+          <Link className="text-decoration-none text-white" to="/dashboard/users">
             <ListItem button>
-              <ListItemIcon className="ms-2 fs-5"><i class="fas fa-users"></i></ListItemIcon>
+              <ListItemIcon className="ms-2 fs-5 text-white"><i class="fas fa-users"></i></ListItemIcon>
               <ListItemText primary={"Users"} />
             </ListItem>
           </Link>
 
-          <Link className="text-decoration-none" to="/dashboard/postRequest">
+          <Link className="text-decoration-none text-white" to="/dashboard/postRequest">
             <ListItem button>
-              <ListItemIcon className="ms-2 fs-5"><i class="fas fa-spinner"></i></ListItemIcon>
+              <ListItemIcon className="ms-2 fs-5 text-white"><i class="fas fa-spinner"></i></ListItemIcon>
               <ListItemText primary={"Post Request"} />
             </ListItem>
           </Link>
 
-          <span className="text-decoration-none">
+          <span className="text-decoration-none text-white">
             <ListItem button>
-              <ListItemIcon className="ms-2 fs-5"><i class="far fa-comment"></i></ListItemIcon>
+              <ListItemIcon className="ms-2 fs-5 text-white"><i class="far fa-comment"></i></ListItemIcon>
               <ListItemText primary={"Messages"} />
             </ListItem>
           </span>
 
           <ListItem button>
-            <ListItemIcon className="ms-2 fs-5"><i class="far fa-comment-alt"></i></ListItemIcon>
-            <ListItemText primary={"Reviews"} />
+            <ListItemIcon className="ms-2 fs-5 text-white"><i class="far fa-comment-alt"></i></ListItemIcon>
+            <ListItemText className="text-white" primary={"Reviews"} />
           </ListItem>
 
           <Divider />
           <ListItem button onClick={logOut}>
-            <ListItemIcon className="ms-2 fs-5 text-danger fw-bold"><LogoutIcon/></ListItemIcon>
-            <ListItemText className="text-danger fw-bold" primary={"SignOut"} />
+            <ListItemIcon className="ms-2 fs-5 text-danger fw-bold text-white"><LogoutIcon/></ListItemIcon>
+            <ListItemText className="text-danger fw-bold text-white" primary={"SignOut"} />
           </ListItem>
 
         </List>

@@ -1,29 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { Container, Dropdown, Row, Col } from "react-bootstrap";
+import { Col, Container, Dropdown, Row } from "react-bootstrap";
 
-import "./Explore.css";
-import "../Home/Blogs/Blogs.css";
 import {
   Card,
   CardActionArea,
   CardActions,
   CardContent,
   CardMedia,
-  Typography,
+  Typography
 } from "@mui/material";
-import { Link } from "react-router-dom";
-import HoverRating from "../Home/Blogs/Rating";
 import "../Dashboard/Packages/Package.css";
+import "../Home/Blogs/Blogs.css";
+import HoverRating from "../Home/Blogs/Rating";
+import "./Explore.css";
 
 const Explore = () => {
   const [blog, setBlog] = useState([]);
   const [value, setValue] = useState("All Blogs");
   useEffect(() => {
-    fetch("https://vast-chamber-83281.herokuapp.com/blogs")
+    fetch("https://holidayz-backend.vercel.app/blogs")
       .then((res) => res.json())
       .then((data) => setBlog(data.products));
   }, []);
-  const allBlog = blog.filter((b) => b.status === "pending");
+  const allBlog = blog.filter((b) => b.status === "approved");
   const highestPaid = allBlog.filter((b) => parseFloat(b.avgPrice) >= 499);
   const topRated = allBlog.filter((b) => parseFloat(b.rating) >= 4.5);
   return (

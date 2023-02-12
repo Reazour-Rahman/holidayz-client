@@ -1,13 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
 // import { Alert, Form } from "react-bootstrap";
-import { useForm } from "react-hook-form";
-import { useLocation, useNavigate, Link } from "react-router-dom";
 import Button from "@mui/material/Button";
+import { useForm } from "react-hook-form";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import swal from 'sweetalert';
 
-import "./Register.css";
 import useFirebase from "../../../Hooks/useFirebase";
+import "./Register.css";
 // React toastify
 
 const Register = () => {
@@ -66,7 +66,7 @@ const Register = () => {
   const saveUserInTheDb = (data) => {
     const user = { ...data };
     console.log(user, "from outside axios");
-    const api = "https://vast-chamber-83281.herokuapp.com/users";
+    const api = "https://holidayz-backend.vercel.app/users";
     // const api = "https://fathomless-coast-82114.herokuapp.com/clientregister";
     axios.post(api, user).then((res) => {
       console.log(res, "inside axios");

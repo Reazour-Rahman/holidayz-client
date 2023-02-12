@@ -1,8 +1,8 @@
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
 import swal from 'sweetalert';
 
 const AddPackage = () => {
@@ -11,7 +11,7 @@ const AddPackage = () => {
     /* take input and send to server */
     const onSubmit = data => {
         //console.log(data)
-        axios.post('https://vast-chamber-83281.herokuapp.com/blogs', data)
+        axios.post('https://holidayz-backend.vercel.app/blogs', data)
             .then(res => {
                 if (res.data.insertedId) {
                     swal("Good job!", "Successfully submitted!", "success");

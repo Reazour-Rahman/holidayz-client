@@ -5,21 +5,24 @@ import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import swal from "sweetalert";
 import useAuth from "../../../../Hooks/useAuth";
+import DetailsComment from "./DetailsComment";
 
 const Details = () => {
   const { blogId } = useParams();
 
   const userName = blogId.displayName;
-//   const {user.} = useAuth();
+  const { user } = useAuth();
 
   const [blogs, setBlogs] = useState([]);
 
-/* fetch datafrom blogs */
+
+  /* fetch data from blogs */
   useEffect(() => {
-    fetch("https://vast-chamber-83281.herokuapp.com/blogs")
+    fetch("https://holidayz-backend.vercel.app/blogs")
       .then((response) => response.json())
       .then((data) => setBlogs(data.products));
   });
+
 
   /* post a comment */
   const { register, handleSubmit, reset } = useForm();
@@ -28,7 +31,12 @@ const Details = () => {
   const onSubmit = (data) => {
     //console.log(data)
     axios
-      .post("https://vast-chamber-83281.herokuapp.com/reviews", data, (data.blogId = blogId))
+      .post(
+        "https://holidayz-backend.vercel.app/reviews",
+        data,
+        (data.blogId = blogId),
+        (data.userName = user.name)
+      )
       .then((res) => {
         if (res.data.insertedId) {
           swal(
@@ -65,34 +73,58 @@ const Details = () => {
                   <p>{blog.descAbout.slice(0, 300)}</p>
                   <br />
                   <p className="fw-bold">Stayed duration : {blog.day} days</p>
-                  <p className="fw-bold">Location latitude : {blog.latitude} </p>
-                  <p className="fw-bold">Location longitude : {blog.longitude}</p>
-                  <p className="fw-bold">I have visited : {blog.visitPlace} these places</p>
-                  <p className="fw-bold">Hotel quantity (expected) : {blog.totalHotel} hotels</p>
-                  <span className="d-flex fw-bold"><p className="me-3">Reviews:</p><Rating name="half-rating-read" defaultValue={blog.rating} precision={0.5} readOnly /></span>
+                  <p className="fw-bold">
+                    Location latitude : {blog.latitude}{" "}
+                  </p>
+                  <p className="fw-bold">
+                    Location longitude : {blog.longitude}
+                  </p>
+                  <p className="fw-bold">
+                    I have visited : {blog.visitPlace} these places
+                  </p>
+                  <p className="fw-bold">
+                    Hotel quantity (expected) : {blog.totalHotel} hotels
+                  </p>
+                  <span className="d-flex fw-bold">
+                    <p className="me-3">Reviews:</p>
+                    <Rating
+                      name="half-rating-read"
+                      defaultValue={blog.rating}
+                      precision={0.5}
+                      readOnly
+                    />
+                  </span>
+
+                  {/* Reviews here */}
+                  <DetailsComment blogId={blogId}></DetailsComment>
 
                   {/* User comment */}
                   <div className="text-start">
-                      <form action="" onSubmit={handleSubmit(onSubmit)} className="px-0 mx-0">
-
-                        <p>Leave a comment :</p>
-                        <TextareaAutosize
-                            {...register("comment")}
-                            className="w-100 rounded-3"
-                            aria-label="empty textarea"
-                            placeholder="Empty"
-                            style={{ minHeight:"100px"}}
-                            />
-                            <Button type="submit" className="bg-success text-white px-4">Submit</Button>
-
-                      </form>
+                    <form
+                      action=""
+                      onSubmit={handleSubmit(onSubmit)}
+                      className="px-0 mx-0"
+                    >
+                      <p>Leave a comment :</p>
+                      <TextareaAutosize
+                        {...register("comment")}
+                        className="w-100 rounded-3"
+                        aria-label="empty textarea"
+                        placeholder="Empty"
+                        style={{ minHeight: "100px" }}
+                      />
+                      <Button
+                        type="submit"
+                        className="bg-success text-white px-4"
+                      >
+                        Submit
+                      </Button>
+                    </form>
                   </div>
-
                 </div>
                 <div className="w-100 container">
                   <div className="container">
-
-                      {/* Phot Album */}
+                    {/* Phot Album */}
 
                     <div className="row rounded-3">
                       <div className="col-6 p-0 pe-1">
@@ -133,10 +165,26 @@ const Details = () => {
 
                 {/* Normal photo */}
                 <div className="w-100 container">
-                  <img className="w-100 rounded-3 pb-1" src={blog.thumb} alt="" />
-                  <img className="w-100 rounded-3 pb-1" src={blog.image2} alt="" />
-                  <img className="w-100 rounded-3 pb-1" src={blog.image3} alt="" />
-                  <img className="w-100 rounded-3 pb-1" src={blog.image1} alt="" />
+                  <img
+                    className="w-100 rounded-3 pb-1"
+                    src={blog.thumb}
+                    alt=""
+                  />
+                  <img
+                    className="w-100 rounded-3 pb-1"
+                    src={blog.image2}
+                    alt=""
+                  />
+                  <img
+                    className="w-100 rounded-3 pb-1"
+                    src={blog.image3}
+                    alt=""
+                  />
+                  <img
+                    className="w-100 rounded-3 pb-1"
+                    src={blog.image1}
+                    alt=""
+                  />
                 </div>
               </section>
             </div>

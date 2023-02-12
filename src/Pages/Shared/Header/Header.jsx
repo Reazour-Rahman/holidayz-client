@@ -196,7 +196,7 @@ const Header = () => {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Profile and Settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar alt="Remy Sharp" src="https://cdn-icons.flaticon.com/png/512/2602/premium/2602046.png?token=exp=1643397403~hmac=ea40c2ce2d2de68c484d591ab334d0ab" />
                 </IconButton>
               </Tooltip>
               <Menu
@@ -221,7 +221,10 @@ const Header = () => {
                 </MenuItem>
               ))} */}
                 <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">Profile</Typography>
+                  <Typography textAlign="center">{user.displayName}</Typography>
+                </MenuItem>
+                <MenuItem onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{user.email}</Typography>
                 </MenuItem>
                 <MenuItem onClick={handleCloseUserMenu}>
                   <Typography textAlign="center">Account</Typography>

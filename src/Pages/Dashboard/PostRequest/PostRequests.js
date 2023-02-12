@@ -1,28 +1,25 @@
-import { Box } from "@mui/system";
-import React, { useEffect, useState } from "react";
-import "../../Home/Blogs/Blogs.css";
 import {
     Card,
     CardActionArea,
     CardActions,
     CardContent,
     CardMedia,
-    Typography,
-  } from "@mui/material";
-  import { Link } from "react-router-dom";
-  import HoverRating from "../../Home/Blogs/Rating";
-  import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-  import SystemUpdateAltIcon from "@mui/icons-material/SystemUpdateAlt";
-  import "../Packages/Package.css";
-  import './Pending.css'
+    Typography
+} from "@mui/material";
+import { Box } from "@mui/system";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import "../../Home/Blogs/Blogs.css";
+import HoverRating from "../../Home/Blogs/Rating";
+import "../Packages/Package.css";
+import './Pending.css';
 
 const PostRequest = () => {
   const [packages, setPackages] = useState([]);
   const [deleted, setDeleted] = useState(null);
 
   useEffect(() => {
-    fetch(`https://vast-chamber-83281.herokuapp.com/blogs`)
+    fetch(`https://holidayz-backend.vercel.app/blogs`)
       .then((res) => res.json())
       .then((data) => {
         setPackages(data.products);
@@ -33,7 +30,7 @@ const PostRequest = () => {
   const handleDeleteOrder = (id) => {
     const proceed = window.confirm('Are you confirm to delete this item?');
     if (proceed) {
-        const url = `https://vast-chamber-83281.herokuapp.com/blogs/${id}`
+        const url = `https://holidayz-backend.vercel.app/blogs/${id}`
         fetch(url, {
             method: 'DELETE'
         })
@@ -51,7 +48,7 @@ const PostRequest = () => {
     // handle order status
     // const handleStatus = (id) => {
     //     const object = { status: 'approved' }
-    //     fetch(`https://vast-chamber-83281.herokuapp.com/blogs/${id}`, {
+    //     fetch(`https://holidayz-backend.vercel.app/blogs/${id}`, {
     //         method: 'PUT',
     //         headers: {
     //             'content-type': 'application/json'
@@ -70,7 +67,7 @@ const PostRequest = () => {
       const data = packages.find(blog => blog._id === id)
       const dataUpdate = {...data}
       dataUpdate.status = 'approved'
-      axios.put(`http://localhost:5000/blogs/${id}`, dataUpdate )
+      axios.put(`https://holidayz-backend.vercel.app/blogs/${id}`, dataUpdate )
     }
 
   return (
