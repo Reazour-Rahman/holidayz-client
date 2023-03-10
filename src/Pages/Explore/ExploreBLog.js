@@ -19,7 +19,7 @@ const ExploreBlog = () => {
   const [deleted, setDeleted] = useState(null);
 
   useEffect(() => {
-    fetch(`https://holidayz-backend.vercel.app/blogs`)
+    fetch(`https://rare-pastoral-moonstone.glitch.me/blogs`)
       .then((res) => res.json())
       .then((data) => {
         setPackages(data.products);
@@ -30,7 +30,7 @@ const ExploreBlog = () => {
   const handleDeleteOrder = (id) => {
     const proceed = window.confirm('Are you confirm to delete this item?');
     if (proceed) {
-        const url = `https://holidayz-backend.vercel.app/blogs/${id}`
+        const url = `https://rare-pastoral-moonstone.glitch.me/blogs/${id}`
         fetch(url, {
             method: 'DELETE'
         })

@@ -18,7 +18,7 @@ const Explore = () => {
   const [blog, setBlog] = useState([]);
   const [value, setValue] = useState("All Blogs");
   useEffect(() => {
-    fetch("https://holidayz-backend.vercel.app/blogs")
+    fetch("https://rare-pastoral-moonstone.glitch.me/blogs")
       .then((res) => res.json())
       .then((data) => setBlog(data.products));
   }, []);

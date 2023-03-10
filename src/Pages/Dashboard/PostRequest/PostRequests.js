@@ -19,7 +19,7 @@ const PostRequest = () => {
   const [deleted, setDeleted] = useState(null);
 
   useEffect(() => {
-    fetch(`https://holidayz-backend.vercel.app/blogs`)
+    fetch(`https://rare-pastoral-moonstone.glitch.me/blogs`)
       .then((res) => res.json())
       .then((data) => {
         setPackages(data.products);
@@ -30,7 +30,7 @@ const PostRequest = () => {
   const handleDeleteOrder = (id) => {
     const proceed = window.confirm('Are you confirm to delete this item?');
     if (proceed) {
-        const url = `https://holidayz-backend.vercel.app/blogs/${id}`
+        const url = `https://rare-pastoral-moonstone.glitch.me/blogs/${id}`
         fetch(url, {
             method: 'DELETE'
         })
@@ -48,7 +48,7 @@ const PostRequest = () => {
     // handle order status
     // const handleStatus = (id) => {
     //     const object = { status: 'approved' }
-    //     fetch(`https://holidayz-backend.vercel.app/blogs/${id}`, {
+    //     fetch(`https://rare-pastoral-moonstone.glitch.me/blogs/${id}`, {
     //         method: 'PUT',
     //         headers: {
     //             'content-type': 'application/json'
@@ -67,7 +67,7 @@ const PostRequest = () => {
       const data = packages.find(blog => blog._id === id)
       const dataUpdate = {...data}
       dataUpdate.status = 'approved'
-      axios.put(`https://holidayz-backend.vercel.app/blogs/${id}`, dataUpdate )
+      axios.put(`https://rare-pastoral-moonstone.glitch.me/blogs/${id}`, dataUpdate )
     }
 
   return (

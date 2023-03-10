@@ -7,7 +7,7 @@ const DetailsComment = (props) => {
 
   /* fetch data from review */
   useEffect(() => {
-    fetch("https://holidayz-backend.vercel.app/reviews")
+    fetch("https://rare-pastoral-moonstone.glitch.me/reviews")
       .then((response) => response.json())
       .then((data) => setReviews(data));
   });

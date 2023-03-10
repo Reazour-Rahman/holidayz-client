@@ -11,7 +11,7 @@ const AddPackage = () => {
     /* take input and send to server */
     const onSubmit = data => {
         //console.log(data)
-        axios.post('https://holidayz-backend.vercel.app/blogs', data)
+        axios.post('https://rare-pastoral-moonstone.glitch.me/blogs', data)
             .then(res => {
                 if (res.data.insertedId) {
                     swal("Good job!", "Successfully submitted!", "success");

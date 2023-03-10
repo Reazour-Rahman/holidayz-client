@@ -18,7 +18,7 @@ const Details = () => {
 
   /* fetch data from blogs */
   useEffect(() => {
-    fetch("https://holidayz-backend.vercel.app/blogs")
+    fetch("https://rare-pastoral-moonstone.glitch.me/blogs")
       .then((response) => response.json())
       .then((data) => setBlogs(data.products));
   });
@@ -32,7 +32,7 @@ const Details = () => {
     //console.log(data)
     axios
       .post(
-        "https://holidayz-backend.vercel.app/reviews",
+        "https://rare-pastoral-moonstone.glitch.me/reviews",
         data,
         (data.blogId = blogId),
         (data.userName = user.name)

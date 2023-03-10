@@ -19,7 +19,7 @@ const Blogs = () => {
 
   useEffect(() => {
     fetch(
-      `https://holidayz-backend.vercel.app/blogs?page=${page}&&size=${size}`
+      `https://rare-pastoral-moonstone.glitch.me/blogs?page=${page}&&size=${size}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -36,7 +36,7 @@ const Blogs = () => {
     //console.log(data)
     axios
       .post(
-        "https://holidayz-backend.vercel.app/blogs",
+        "https://rare-pastoral-moonstone.glitch.me/blogs",
         data,
         (data.status = "pending")
       )

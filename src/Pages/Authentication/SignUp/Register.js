@@ -66,7 +66,7 @@ const Register = () => {
   const saveUserInTheDb = (data) => {
     const user = { ...data };
     console.log(user, "from outside axios");
-    const api = "https://holidayz-backend.vercel.app/users";
+    const api = "https://rare-pastoral-moonstone.glitch.me/users";
     // const api = "https://fathomless-coast-82114.herokuapp.com/clientregister";
     axios.post(api, user).then((res) => {
       console.log(res, "inside axios");

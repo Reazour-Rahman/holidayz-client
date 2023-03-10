@@ -78,7 +78,7 @@ const useFirebase = () => {
   };
   // checking admin
   useEffect(() => {
-    const api = `https://holidayz-backend.vercel.app/users/${user.email}`;
+    const api = `https://rare-pastoral-moonstone.glitch.me/users/${user.email}`;
     axios.get(api).then((res) => {
       setAdmin(res.data.admin);
     });
